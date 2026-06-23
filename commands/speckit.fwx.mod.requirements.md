@@ -19,6 +19,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Workflow
 
+0. **Check project constitution**:
+   - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.
+   - Constitution must be strictly followed.
+
 1. **Determine module name**:
    - If the user explicitly provided a module name in their input, use it.
    - Otherwise, infer a short snake-case module name from the content with prefix "mod" (e.g., "mod_task_tracker", "mod_expense_reports").

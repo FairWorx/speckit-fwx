@@ -30,11 +30,16 @@ You **MUST** consider the user input before proceeding (if not empty).
    - If no sprint reports exist, start at sprint 1.
    - Ask the user to confirm the sprint number.
 
-3. **Read existing reference docs** — Read these to understand the current state of the platform and always use the latest versions:
+3. **Read existing reference docs and templates** — Read these to understand the current state of the platform and always use the latest versions:
    - `docs/01-as-is/business-context-actual.md` — current business capabilities
    - `docs/01-as-is/system-map.md` — current architecture and API endpoints
    - `docs/01-as-is/data-schema-actual.md` — current database schema
    - `docs/01-as-is/technical-debt.md` — current technical debt items
+   - `templates/business_context_template.md` — template for business context docs
+   - `templates/system_map_template.md` — template for system map docs
+   - `templates/data_schema_template.md` — template for data schema docs
+   - `templates/technical_debt_template.md` — template for technical debt docs
+   - `templates/sprint_report_template.md` — template for sprint reports
    - The module's `PRD.md` at `docs/02-agile/modules/[module_name]/PRD.md` — planned requirements
    - The module's `SDD.md` at `docs/02-agile/modules/[module_name]/SDD.md` — planned design
    - The spec file `specs/*/[module_name]/spec.md` or the most recent spec directory — original specification
@@ -56,6 +61,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Tests**: test files (backend/tests/, frontend/tests/)
    - **Docs**: documentation files (docs/)
    - **Config**: configuration files (docker/, package.json, pyproject.toml, etc.)
+
+6. **Check project constitution**:
+   - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.
+   - Constitution must be strictly followed.
 
 ## Workflow
 
@@ -79,106 +88,34 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Provide a list of new business capabilities added (for business-context-actual.md).
    - Document their responses.
 
-3. **Update as-is docs (Step 13)** — Based on the actual changes and developer input:
+3. **Update as-is docs (Step 13)** — Based on the actual changes and developer input. For each doc, follow the structure defined in its corresponding template in `templates/`, filling in placeholders with actual implementation content:
 
-   #### a. Update `docs/01-as-is/business-context-actual.md`
-   - Add new business capabilities as bullet points under the appropriate subsection in Section 1.
-   - Format: one bullet per new capability, matching the existing style (descriptive, action-oriented).
-   - Update the stakeholder pain points table in Section 3 if any new pain points were resolved.
-   - Preserve all existing content — only add new entries.
+    #### a. Update `docs/01-as-is/business-context-actual.md`
+    - Template: `templates/business_context_template.md`
+    - Add new business capabilities as bullet points under Section 1.
+    - Update the stakeholder pain points table in Section 3 if any were resolved.
+    - Preserve all existing content — only add new entries.
 
-   #### b. Update `docs/01-as-is/system-map.md`
-   - Add new API endpoints to the Entry Points table under the appropriate functional area.
-   - Update the Architecture Diagram if new services/components were added.
-   - Update the Backend Module Map if new modules were added to the `modules/` directory.
-   - Update the Frontend Module Map if new components or pages were added.
-   - Update the Mobile Responsive Layout table if new components affect mobile behaviour.
-   - Add any new service dependencies (e.g., new Docker services).
+    #### b. Update `docs/01-as-is/system-map.md`
+    - Template: `templates/system_map_template.md`
+    - Add new API endpoints to the Entry Points table.
+    - Update Architecture Diagram, Backend/Frontend Module Maps, and service inventory as needed.
 
-   #### c. Update `docs/01-as-is/data-schema-actual.md`
-   - Add new tables to the Table Definitions section with full Column/Type/Description documentation.
-   - Add new migrations to the Migration Chain and Migration History table.
-   - Update the ERD (Mermaid diagram) if new entities or relationships were added.
-   - Update the migration count in the opening summary.
-   - For any existing tables that were modified, update their column definitions.
+    #### c. Update `docs/01-as-is/data-schema-actual.md`
+    - Template: `templates/data_schema_template.md`
+    - Add new tables, migrations, and ERD changes with full column definitions.
+    - Update the migration count in the opening summary.
 
-   #### d. Update `docs/01-as-is/technical-debt.md`
-   - Add any new technical debt items with: ID (next sequential), Description, Area, Priority, Status.
-   - Update any existing items that were resolved during this sprint.
+    #### d. Update `docs/01-as-is/technical-debt.md`
+    - Template: `templates/technical_debt_template.md`
+    - Add new items with sequential ID, Description, Area, Priority.
+    - Mark any resolved items from this sprint.
 
-4. **Create sprint report (Step 14)** — Generate `docs/03-sprints/sprint-NNN-report.md` using this format:
+4. **Create sprint report (Step 14)** — Generate `docs/03-sprints/sprint-NNN-report.md` using `templates/sprint_report_template.md`:
 
-   ```markdown
-   # Sprint NNN Report: [Sprint Title]
-
-   **Sprint Date**: YYYY-MM-DD
-   **Branch**: `[branch-name]`
-   **Spec**: `specs/[NNN-module-name]/spec.md`
-
-   ---
-
-   ## Summary
-
-   [2-3 sentence summary of what was delivered in this sprint]
-
-   ---
-
-   ## Definition of Done (DoD) Audit
-
-   ### Technical Completion (AI Gate)
-
-   | Criterion | Status | Notes |
-   |-----------|--------|-------|
-   | **Code Standard** | ✅ Pass | [tech stack summary] |
-   | **No Duplication** | ✅ Pass | [reuse patterns] |
-   | **Automated Pass** | ✅ Pass | [test results summary] |
-   | **Traceability** | ✅ Pass | [traceability notes] |
-
-   ### Quality Assurance (Human Gate)
-
-   | Criterion | Status | Notes |
-   |-----------|--------|-------|
-   | **Acceptance Criteria Met** | ✅ Pass | [summary] |
-   | **Manual Scenarios** | ⏳ Pending | Requires manual UI testing and code review |
-   | **Human Review** | ⏳ Pending | Requires manual UI testing and code review |
-
-   ### Documentation & Baseline Sync (Repository Gate)
-
-   | Criterion | Status | Notes |
-   |-----------|--------|-------|
-   | **As-Is Update** | ✅ Pass | Business context, system map, data schema docs updated |
-   | **PRD/SDD Updated** | ✅ Pass | SDD synced with implementation |
-   | **Artifact Generation** | ✅ Pass | This sprint report + devlog |
-
-   ---
-
-   ## What Was Delivered
-
-   ### [Sprint Title]
-
-   - [ ] [Deliverable item 1]
-   - [ ] [Deliverable item 2]
-   - ...
-
-   ### Backend Changes
-
-   - [file path] — [brief description of change]
-
-   ### Frontend Changes
-
-   - [file path] — [brief description of change]
-
-   ### Clarifications Resolved
-
-   1. [Clarification 1]
-   2. [Clarification 2]
-
-   ---
-
-   ## Remaining Work
-
-   - [Any unfinished tasks or known issues]
-   ```
+    - Copy `templates/sprint_report_template.md` to `docs/03-sprints/sprint-NNN-report.md`
+    - Replace all `{{PLACEHOLDER}}` variables with actual content from implementation
+    - Follow the same structure: Summary, DoD Audit, What Was Delivered, Known Issues, Key Decisions
 
 5. **Create devlog (Step 14)** — Generate `docs/06-devlog/session-YYYY-MM-DD.md` using this format:
 
@@ -288,9 +225,16 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Template Reference
 
-The sprint report and devlog follow the formats established in:
-- `docs/03-sprints/sprint-030-report.md`
-- `docs/06-devlog/session-2026-06-17.md`
+All generated docs follow the templates in `templates/`:
+
+| Doc | Template |
+|-----|----------|
+| Business Context | `templates/business_context_template.md` |
+| System Map | `templates/system_map_template.md` |
+| Data Schema | `templates/data_schema_template.md` |
+| Technical Debt | `templates/technical_debt_template.md` |
+| Sprint Report | `templates/sprint_report_template.md` |
+| Devlog | (inline format — no template yet) |
 
 ## Docs Quality Checklist
 
@@ -307,11 +251,13 @@ Ensure the generated documentation follows these rules:
 - [ ] SDD Change Log is updated with a new entry
 - [ ] All PRD requirements remain accurately reflected in the SDD (if a requirement was descoped, note it)
 - [ ] As-is docs contain no "TODO" or placeholder content
+- [ ] Template placeholders (`{{PLACEHOLDER}}`) are all replaced with actual content
 - [ ] Changes are staged and ready for commit (user confirmation obtained before commit)
 
 ## References
 
-Always refer to the latest versions of the following docs:
+Always refer to the latest versions of the following:
+- **Templates**: `templates/` (all template files)
 - **Existing as-is docs**: `docs/01-as-is/` (all files)
 - **Existing sprint reports**: `docs/03-sprints/` (for format reference)
 - **Existing devlogs**: `docs/06-devlog/` (for format reference)

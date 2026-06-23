@@ -30,7 +30,11 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Otherwise, use the user's text input directly.
    - If none exist, ask the user to provide requirements or create a PRD first.
 
-3. **Read the template**:
+3. **Check project constitution**:
+   - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.
+   - Constitution must be strictly followed.
+
+4. **Read the template**:
    - Load the template from `.specify/extensions/fwx/templates/module_sdd_template.md`.
 
 ## Workflow

@@ -1,13 +1,13 @@
 ---
-description: Generate a module-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)
+description: Generate an application-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)
 ---
 
 <!-- Extension: fwx -->
 <!-- Config: .specify/extensions/fwx/ -->
 
-# Generate Module Backlog
+# Generate Application Backlog
 
-Produce a `BACKLOG.md` file for a FairWorx module under `docs/02-agile/modules/[module_name]/`.
+Produce a `BACKLOG.md` file for a greenfield FairWorx application under `docs/02-agile/`.
 
 ## User Input
 
@@ -19,26 +19,23 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Prerequisites
 
-1. **PRD must exist** — A `PRD.md` file for the module is required. Determine the source in this order:
-   - If the user provided a path or module name in the arguments, use it.
-   - Otherwise, search `docs/02-agile/modules/*/PRD.md` and infer the module name from the `$ARGUMENTS` content.
-   - Ask the user to confirm the inferred module name before proceeding.
-   - If no PRD is found, ask the user to create one first via `/speckit.fwx.mod.prd`.
+1. **PRD must exist** — A `docs/02-agile/PRD.md` file for the application is required.
+   - If no PRD is found, ask the user to create one first via `/speckit.fwx.prd`.
 
-2. **Determine module directory**:
-   - Once the module name is confirmed, set `module_dir = docs/02-agile/modules/[module_name]/`.
-   - Verify `PRD.md` exists at `[module_dir]/PRD.md`.
-   - Check if `[module_dir]/requirements.md` exists (from an earlier `/speckit.fwx.mod.requirements` run) for additional detail.
-
-3. **Check project constitution**:
+2. **Check project constitution**:
    - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.
    - Constitution must be strictly followed.
 
+3. **Read additional sources**:
+   - Read `docs/02-agile/PRD.md` to extract features, data entities, and requirements.
+   - If `docs/02-agile/requirements.md` exists (from an earlier `/speckit.fwx.requirements` run), read it for additional detail.
+   - If `docs/02-agile/SDD.md` exists (from an earlier `/speckit.fwx.sdd` run), read it for technical design context.
+
 4. **Read the template**:
-   - Load the template from `.specify/extensions/fwx/templates/module_backlog_template.md`.
+   - Load the template from `.specify/extensions/fwx/templates/app_backlog_template.md`.
 
 5. **Check for existing BACKLOG**:
-   - If `[module_dir]/BACKLOG.md` already exists, present the user with three options:
+   - If `docs/02-agile/BACKLOG.md` already exists, present the user with three options:
      - **Replace** — overwrite with newly generated backlog.
      - **Update** — merge new PBIs into existing, preserving completed status.
      - **Keep existing** — abort generation.
@@ -46,21 +43,19 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Workflow
 
-1. **Gather context** — Read these platform reference docs to understand how the module fits into the broader system and always use the latest versions of the docs:
-   - `docs/02-agile/PRD.md` — understand the main app's architecture, module runtime, Apps tab, access control, and the specific section(s) covering this module.
-   - `docs/02-agile/SDD.md` — understand data model patterns, API endpoint conventions, permissions model, source code organization.
-   - `docs/02-agile/UI.md` — understand glass-morphism design system, layout patterns, component styling.
-   - The module's `PRD.md` at `[module_dir]/PRD.md` — extract Module Registry (ID, name, version, dependencies, typical group, required role) and Module Description (core purpose, features, outcomes).
-   - If `[module_dir]/requirements.md` exists, read it for additional feature details, data entities, UI patterns, and integration points.
+1. **Gather context** — Read the application PRD and SDD to understand the full scope:
+   - `docs/02-agile/PRD.md` — extract application overview, core features, data model, API architecture, UI/UX direction, and technical architecture.
+   - `docs/02-agile/SDD.md` — understand data model patterns, API conventions, frontend architecture, and deployment.
+   - `docs/02-agile/requirements.md` — if exists, read for additional feature details and constraints.
 
-2. **Extract and organize module features**:
-   - From the module PRD description, parent PRD/SDD sections, and requirements.md, compile a complete list of features/functionality the module must deliver.
+2. **Extract and organize features**:
+   - From the PRD, SDD, and requirements.md, compile a complete list of features/functionality the application must deliver.
    - For each feature, identify:
      - **Description** — what it does
-     - **Dependencies** — which other features or modules it depends on
+     - **Dependencies** — which other features or systems it depends on
      - **Priority** — P0 (Critical — must have for launch), P1 (High — important), P2 (Medium — nice to have), P3 (Low — future)
      - **Effort estimate** — rough: Small / Medium / Large
-     - **Functional role** — who uses it (e.g., member, finance_team, admin)
+     - **User role** — who uses it (e.g., member, admin, finance_team)
 
 3. **Ask for developer input or confirmation**:
    - Present the extracted feature list to the developer for confirmation.
@@ -74,14 +69,14 @@ You **MUST** consider the user input before proceeding (if not empty).
 4. **Group features into Epics**:
    - Organize related features into logical Epics. Each Epic should represent a cohesive slice of functionality.
    - Guidelines for Epic grouping:
-     - **Phase-based** — e.g., "Foundation" (DB, models, API), "Core Features", "Advanced Features"
-     - **Feature-area-based** — e.g., "User Management", "Reporting", "Notifications"
+     - **Phase-based** — e.g., "Foundation" (auth, DB, infrastructure), "Core Features", "Advanced Features"
+     - **Domain-based** — e.g., "User Management", "Reporting", "Notifications"
      - **CRUD-based** — e.g., "Entity A CRUD", "Entity B CRUD", "Cross-Entity Workflows"
    - Name each Epic descriptively.
    - If there are features that cannot be grouped into any named Epic, place them in a "Future Backlog" section.
 
 5. **Order Epics and PBIs properly**:
-   - Arrange Epics so that foundational work (data models, infrastructure, API scaffolding) appears first.
+   - Arrange Epics so that foundational work (auth, data models, infrastructure, API scaffolding) appears first.
    - Within each Epic, order PBIs so that:
      - Database migrations come before API endpoints.
      - API endpoints come before frontend components.
@@ -110,7 +105,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
      #### c. User Story
      - Format: `As a **[Role]**, [user story].`
-     - Derive the role from the module's required role or the specific feature context.
+     - Derive the role from the application's user personas or the specific feature context.
 
      #### d. Acceptance Criteria (Functional)
      - Write clear, testable acceptance criteria as a checklist.
@@ -143,46 +138,40 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Mark any PRD requirement not covered by any PBI as `⚠️ NOT COVERED` — must be resolved with the developer.
 
 8. **Fill the template**:
-   - Replace all `{{PLACEHOLDER}}` values in the backlog template with module-specific content derived from the analysis above.
-   - Follow these conventions from the existing product backlog (`docs/02-agile/BACKLOG.md`):
+   - Replace all `{{PLACEHOLDER}}` values in the backlog template with application-specific content derived from the analysis above.
+   - Follow these conventions:
      - **Backlog Status Summary**: Count PBIs by status (all start as Todo for new backlogs).
      - **Epic structure**: Each Epic gets a header with `**Status:**`, `**PBIs:**` summary, then individual PBI subsections.
      - **PBI format**: Full PBIs use the complete template (Priority, References, User Story, Acceptance Criteria, Technical Guidance, Constraints). Simple/obvious PBIs may use a condensed inline format.
-     - **References**: Reference the parent PRD section (e.g., `PRD v2.0 §6.1 (F1)`), the module PRD, and any relevant SDD sections.
-     - **Dependency Graph**: Optionally include an ASCII dependency tree at the end of the document, following the pattern from BACKLOG-v2.10.md.
+     - **References**: Reference the PRD section (e.g., `PRD v1.0 §2.1`), SDD sections, and requirements.
+     - **Dependency Graph**: Optionally include an ASCII dependency tree at the end of the document.
 
 9. **Output**:
-   - Create the module directory if it doesn't exist: `mkdir -p [module_dir]`.
-   - Write the filled backlog to `[module_dir]/BACKLOG.md`.
+   - Write the filled backlog to `docs/02-agile/BACKLOG.md`.
 
 ## Template Reference
 
-The template `.specify/extensions/fwx/templates/module_backlog_template.md` contains these placeholders:
+The template `.specify/extensions/fwx/templates/app_backlog_template.md` contains these placeholders:
 
 | Placeholder | Description |
 |-------------|-------------|
-| `{{MODULE_NAME}}` | Display name of the module (e.g., "Group Dashboard", "Member Dues") |
-| `{{MODULE_CODE}}` | Module code (e.g., C1, F1) |
-| `{{MODULE_ID}}` | Module ID (e.g., mod_group_dashboard, mod_member_dues) |
+| `{{APP_NAME}}` | Display name of the application |
 | `{{VERSION}}` | Version from PRD |
 | `{{CURRENT_DATE}}` | Today's date in YYYY-MM-DD format |
 | `{{TODO_COUNT}}` | Number of Todo PBIs |
 | `{{IN_PROGRESS_COUNT}}` | Number of In Progress PBIs (always 0 for new backlogs) |
 | `{{DONE_COUNT}}` | Number of Done PBIs (always 0 for new backlogs) |
 | `{{TOTAL_COUNT}}` | Total number of PBIs |
-| `{{EPIC_1_TITLE}}` | Title of first Epic |
-| `{{EPIC_1_PBIS}}` | PBI range and summary for first Epic |
-| `{{EPIC_N_TITLE}}` | Title of Nth Epic |
-| `{{EPIC_N_PBIS}}` | PBI range and summary for Nth Epic |
 | `{{PBI_LIST}}` | All generated PBIs across all Epics (epic headers + PBI entries) |
 | `{{TRACEABILITY_MATRIX}}` | The requirements traceability table |
+| `{{NOTES}}` | Notes section content |
 | `{{RELATED_DOCS}}` | Links to related documents |
 | `{{CHANGE_LOG}}` | Initial change log entry |
 
 ## Backlog Quality Checklist
 
 Ensure the generated BACKLOG.md follows these rules:
-- [ ] Module name, ID, and code match the PRD exactly
+- [ ] Application name and version match the PRD exactly
 - [ ] Every requirement from the PRD is covered by at least one PBI
 - [ ] PBIs are grouped into logical Epics with descriptive names
 - [ ] PBI numbering follows `PBI-{Epic#}-{seq}` format consistently
@@ -192,19 +181,13 @@ Ensure the generated BACKLOG.md follows these rules:
 - [ ] Each acceptance criteria has a test type annotation: [unit], [integration], [e2e], or [human]
 - [ ] Requirements Traceability Matrix is complete with no "NOT COVERED" entries
 - [ ] User stories follow the "As a **[Role]**" format
-- [ ] References to parent PRD/SDD use the correct file paths and section numbers
+- [ ] References to PRD/SDD use the correct file paths and section numbers
 - [ ] Change Log section is included with initial version entry
-- [ ] Related Documents section links to PRD and SDD
-- [ ] The generated backlog follows the same structural conventions as `docs/02-agile/BACKLOG-v2.10.md`
+- [ ] Related Documents section links to PRD, SDD, and requirements
 
 ## References
 
-Always refer to the latest versions of the following docs:
-- **Template file**: `.specify/extensions/fwx/templates/module_backlog_template.md`
-- **Platform PRD**: `docs/02-agile/PRD.md`
-- **Platform SDD**: `docs/02-agile/SDD.md`
-- **UI Design System**: `docs/02-agile/UI.md`
-- **Existing product backlog**: `docs/02-agile/BACKLOG.md` (review for PBI format and numbering conventions)
-- **Module PRD**: `docs/02-agile/modules/[module_name]/PRD.md`
-- **Module requirements**: `docs/02-agile/modules/[module_name]/requirements.md` (if exists)
-- **Other module backlogs**: `docs/02-agile/modules/*/BACKLOG.md` (review for consistency)
+- **Template file**: `.specify/extensions/fwx/templates/app_backlog_template.md`
+- **Application PRD**: `docs/02-agile/PRD.md`
+- **Application SDD**: `docs/02-agile/SDD.md`
+- **Requirements file**: `docs/02-agile/requirements.md` (if exists)

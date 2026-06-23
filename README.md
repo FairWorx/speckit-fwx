@@ -15,7 +15,7 @@ Speckit extension for scaffolding FairWorx platform modules following platform c
 | `speckit.fwx.mod.sdd` | Generate a Solution Design Document (SDD.md) for a module |
 | `speckit.fwx.mod.backlog` | Generate a module-level BACKLOG.md from the PRD |
 | `speckit.fwx.mod.requirements` | Clean up raw user input into a structured requirements.md |
-| `speckit.fwx.mod.docs` | Generate sprint report, devlog, update as-is docs, and sync SDD after implementation |
+| `speckit.fwx.docs` | Generate sprint report, devlog, update as-is docs, and sync SDD after implementation |
 
 ## Usage
 

@@ -30,7 +30,11 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Otherwise, infer a short snake-case module name from the content with prefix "mod" (e.g., "mod_task_tracker", "mod_expense_reports").
    - Ask the user to confirm the inferred name before proceeding.
 
-3. **Read the template**:
+3. **Check project constitution**:
+   - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.
+   - Constitution must be strictly followed.
+
+4. **Read the template**:
    - Load the template from `.specify/extensions/fwx/templates/module_prd_template.md`.
 
 ## Workflow

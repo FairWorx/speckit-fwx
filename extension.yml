@@ -16,11 +16,14 @@ requires:
 
 provides:
   commands:
+    - name: speckit.fwx.backlog
+      file: commands/speckit.fwx.backlog.md
+      description: "Generate an application-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)"
     - name: speckit.fwx.mod.backlog
       file: commands/speckit.fwx.mod.backlog.md
       description: "Generate a module-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)"
-    - name: speckit.fwx.mod.docs
-      file: commands/speckit.fwx.mod.docs.md
+    - name: speckit.fwx.docs
+      file: commands/speckit.fwx.docs.md
       description: "Generate sprint report, devlog, update as-is docs, and sync SDD after implementation"
     - name: speckit.fwx.mod.prd
       file: commands/speckit.fwx.mod.prd.md
@@ -28,6 +31,15 @@ provides:
     - name: speckit.fwx.mod.requirements
       file: commands/speckit.fwx.mod.requirements.md
       description: "Clean up and organize raw user input into a structured requirements.md file for a new module"
+    - name: speckit.fwx.prd
+      file: commands/speckit.fwx.prd.md
+      description: "Generate a Product Requirements Document (PRD.md) for a greenfield FairWorx application using the app PRD template"
+    - name: speckit.fwx.requirements
+      file: commands/speckit.fwx.requirements.md
+      description: "Clean up and organize raw user input into a structured requirements.md file for a greenfield FairWorx application"
+    - name: speckit.fwx.sdd
+      file: commands/speckit.fwx.sdd.md
+      description: "Generate a Solution Design Document (SDD.md) for a greenfield FairWorx application using the app SDD template"
     - name: speckit.fwx.mod.sdd
       file: commands/speckit.fwx.mod.sdd.md
       description: "Generate a Solution Design Document (SDD.md) for a FairWorx module using the module SDD template"
