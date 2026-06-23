@@ -1,0 +1,43 @@
+schema_version: "1.0"
+
+extension:
+  id: fwx
+  name: "FairWorx Module Generator"
+  version: "1.0.0"
+  description: "Scaffold new FairWorx platform modules following platform constitution, UI guidelines, and architectural patterns from PRD and SDD"
+  author: medhiwidjaja
+  license: MIT
+
+requires:
+  speckit_version: ">=0.2.0"
+  tools:
+    - name: opencode
+      required: true
+
+provides:
+  commands:
+    - name: speckit.fwx.mod.backlog
+      file: commands/speckit.fwx.mod.backlog.md
+      description: "Generate a module-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)"
+    - name: speckit.fwx.mod.docs
+      file: commands/speckit.fwx.mod.docs.md
+      description: "Generate sprint report, devlog, update as-is docs, and sync SDD after implementation"
+    - name: speckit.fwx.mod.prd
+      file: commands/speckit.fwx.mod.prd.md
+      description: "Generate a Product Requirements Document (PRD.md) for a module using the module PRD template"
+    - name: speckit.fwx.mod.requirements
+      file: commands/speckit.fwx.mod.requirements.md
+      description: "Clean up and organize raw user input into a structured requirements.md file for a new module"
+    - name: speckit.fwx.mod.sdd
+      file: commands/speckit.fwx.mod.sdd.md
+      description: "Generate a Solution Design Document (SDD.md) for a FairWorx module using the module SDD template"
+
+  config: []
+
+hooks: {}
+
+tags:
+  - "fairworx"
+  - "module"
+  - "scaffolding"
+  - "prd"
