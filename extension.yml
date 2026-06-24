@@ -16,6 +16,9 @@ requires:
 
 provides:
   commands:
+    - name: speckit.fwx.init
+      file: commands/speckit.fwx.init.md
+      description: "Initialize the FairWorx documentation structure — verify commands, create docs folders, seed baseline docs from templates"
     - name: speckit.fwx.backlog
       file: commands/speckit.fwx.backlog.md
       description: "Generate an application-level BACKLOG.md by breaking down the PRD into epics and Product Backlog Items (PBIs)"
