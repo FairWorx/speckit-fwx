@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: fwx
   name: "FairWorx Module Generator"
-  version: "0.2.0"
+  version: "0.2.2"
   description: "Scaffold new FairWorx platform modules following platform constitution, UI guidelines, and architectural patterns from PRD and SDD"
   author: medhiwidjaja
   license: MIT
