@@ -56,7 +56,7 @@ These commands use the **speckit.fwx** extension. They define *what* the module 
 ### 1. Requirements (Optional)
 
 ```
-/speckit.fwx.mod_requirements <raw description>
+/speckit.fwx.mod-requirements <raw description>
 ```
 
 **Purpose:** Take raw, unstructured user input about a desired feature and produce a structured `requirements.md` file.
@@ -74,7 +74,7 @@ These commands use the **speckit.fwx** extension. They define *what* the module 
 ### 2. PRD (Product Requirements Document)
 
 ```
-/speckit.fwx.mod_prd [module_name]
+/speckit.fwx.mod-prd [module_name]
 ```
 
 **Purpose:** Produce a formal Product Requirements Document (`PRD.md`) for the module. This defines *what* the module does, its features, data entities, API surface, UI patterns, and integration points with the main app.
@@ -83,7 +83,7 @@ These commands use the **speckit.fwx** extension. They define *what* the module 
 
 **Input Sources (in priority order):**
 1. Existing `docs/02-agile/modules/[module_name]/requirements.md`
-2. A file path passed as an argument with a `.txt` or `.md` extension (e.g., `/speckit.fwx.mod_prd path/to/notes.txt`)
+2. A file path passed as an argument with a `.txt` or `.md` extension (e.g., `/speckit.fwx.mod-prd path/to/notes.txt`)
 3. Raw text in the command arguments
 
 **Validation:** The command cross-references the requirements against the main platform PRD, SDD, and UI docs. Any deviations are surfaced to you with options to proceed, comply, or update the parent docs.
@@ -97,7 +97,7 @@ These commands use the **speckit.fwx** extension. They define *what* the module 
 ### 3. SDD (Solution Design Document) — Optional
 
 ```
-/speckit.fwx.mod_sdd [module_name]
+/speckit.fwx.mod-sdd [module_name]
 ```
 
 **Purpose:** Produce a detailed Solution Design Document (`SDD.md`) with data models, API schemas, endpoint implementations, frontend component trees, service layer logic, and module manifests.
@@ -119,7 +119,7 @@ These commands use the **speckit.fwx** extension. They define *what* the module 
 ### 4. Backlog
 
 ```
-/speckit.fwx.mod_backlog [module_name]
+/speckit.fwx.mod-backlog [module_name]
 ```
 
 **Purpose:** Break the PRD down into Epics and Product Backlog Items (PBIs) in a `BACKLOG.md` file. This is the bridge between product definition and sprint execution.
@@ -411,10 +411,10 @@ Phase 0: Project Foundation (one-time)
 
 Phase 1: Module Definition
 ─────────────────────────────────────────────
-/speckit.fwx.mod_requirements <desc>    (optional — structured intake, or write by hand)
-/speckit.fwx.mod_prd [path|name]        (required — product requirements)
-/speckit.fwx.mod_sdd [name]             (optional — solution design)
-/speckit.fwx.mod_backlog [name]         (required — epics & PBIs)
+/speckit.fwx.mod-requirements <desc>    (optional — structured intake, or write by hand)
+/speckit.fwx.mod-prd [path|name]        (required — product requirements)
+/speckit.fwx.mod-sdd [name]             (optional — solution design)
+/speckit.fwx.mod-backlog [name]         (required — epics & PBIs)
 
 Phase 2: Sprint Execution (per sprint)
 ─────────────────────────────────────────────

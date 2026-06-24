@@ -24,10 +24,10 @@ Speckit extension for scaffolding FairWorx platform modules following platform c
 
 | Command | Description |
 |---------|-------------|
-| `speckit.fwx.mod_requirements` | Organize raw user input into a structured `requirements.md` for a new module |
-| `speckit.fwx.mod_prd` | Generate a Product Requirements Document (PRD.md) for a module |
-| `speckit.fwx.mod_sdd` | Generate a Solution Design Document (SDD.md) for a module |
-| `speckit.fwx.mod_backlog` | Generate a module-level BACKLOG.md by breaking down the PRD into epics and PBIs |
+| `speckit.fwx.mod-requirements` | Organize raw user input into a structured `requirements.md` for a new module |
+| `speckit.fwx.mod-prd` | Generate a Product Requirements Document (PRD.md) for a module |
+| `speckit.fwx.mod-sdd` | Generate a Solution Design Document (SDD.md) for a module |
+| `speckit.fwx.mod-backlog` | Generate a module-level BACKLOG.md by breaking down the PRD into epics and PBIs |
 
 ## Usage
 
