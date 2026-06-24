@@ -2,16 +2,16 @@
 description: Initialize the FairWorx documentation structure — verify commands, create docs folders, seed baseline docs from templates
 ---
 
-<!-- Extension: fwx -->
-<!-- Config: .specify/extensions/fwx/ -->
+# Extension: fwx
+# Base path: .specify/extensions/fwx/ (all relative paths below are relative to this directory)
 
 # Initialize FairWorx Docs Structure
 
-Verifies that all `speckit.fwx.*` commands are available and bootstraps the `docs/` directory with the required folder structure and initial baseline docs from templates.
+Verifies that all `speckit.fwx.*` commands are available and bootstraps the project's `docs/` directory (relative to the project root) with the required folder structure and initial baseline docs from templates.
 
 ## Workflow
 
-1. **Check commands** — Verify all required `speckit.fwx.*.md` files exist in `commands/`:
+1. **Check commands** — Verify all required `speckit.fwx.*.md` files exist in `.specify/extensions/fwx/commands/`:
 
    ```
    Required commands:
@@ -29,7 +29,7 @@ Verifies that all `speckit.fwx.*` commands are available and bootstraps the `doc
 
    Missing commands are reported. Any missing commands should be flagged but do not block the rest of the init.
 
-2. **Check templates** — Verify all required template files exist in `templates/`:
+2. **Check templates** — Verify all required template files exist in `.specify/extensions/fwx/templates/`:
 
    ```
    Required templates:
@@ -58,11 +58,11 @@ Verifies that all `speckit.fwx.*` commands are available and bootstraps the `doc
 
    | Destination | Source Template |
    |-------------|-----------------|
-   | `docs/01-as-is/business-context-actual.md` | `templates/business_context_template.md` |
-   | `docs/01-as-is/system-map.md` | `templates/system_map_template.md` |
-   | `docs/01-as-is/data-schema-actual.md` | `templates/data_schema_template.md` |
-   | `docs/01-as-is/technical-debt.md` | `templates/technical_debt_template.md` |
-   | `docs/03-sprints/sprint-001-report.md` | `templates/sprint_report_template.md` |
+   | `docs/01-as-is/business-context-actual.md` | `.specify/extensions/fwx/templates/business_context_template.md` |
+   | `docs/01-as-is/system-map.md` | `.specify/extensions/fwx/templates/system_map_template.md` |
+   | `docs/01-as-is/data-schema-actual.md` | `.specify/extensions/fwx/templates/data_schema_template.md` |
+   | `docs/01-as-is/technical-debt.md` | `.specify/extensions/fwx/templates/technical_debt_template.md` |
+   | `docs/03-sprints/sprint-001-report.md` | `.specify/extensions/fwx/templates/sprint_report_template.md` |
 
    If a target directory already has files, skip seeding for that directory and report existing files.
 
