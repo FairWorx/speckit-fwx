@@ -26,7 +26,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 2. **Source of requirements** — Determine the input source in this order:
    - If `docs/02-agile/modules/[module_name]/PRD.md` exists, read it as the primary source (PRD contains the feature descriptions and data model requirements).
-   - Otherwise, if `docs/02-agile/module/[module_name]/requirements.md` exists (from an earlier `/speckit.fwx.mod.requirements` run), read it.
+   - Otherwise, if `docs/02-agile/module/[module_name]/requirements.md` exists (from an earlier `/speckit.fwx.mod_requirements` run), read it.
    - Otherwise, use the user's text input directly.
    - If none exist, ask the user to provide requirements or create a PRD first.
 
@@ -158,4 +158,4 @@ Always refer to the latest versions of the following docs:
 - **Platform SDD**: `docs/02-agile/SDD.md`
 - **UI Design System**: `docs/02-agile/UI.md`
 - **Existing module SDDs**: `docs/02-agile/modules/` (review for consistency)
-- **PRD command reference**: `.specify/extensions/fwx/commands/speckit.fwx.mod.prd.md` (follow same procedural patterns)
+- **PRD command reference**: `.specify/extensions/fwx/commands/speckit.fwx.mod_prd.md` (follow same procedural patterns)

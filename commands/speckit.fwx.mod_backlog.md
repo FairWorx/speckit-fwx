@@ -23,12 +23,12 @@ You **MUST** consider the user input before proceeding (if not empty).
    - If the user provided a path or module name in the arguments, use it.
    - Otherwise, search `docs/02-agile/modules/*/PRD.md` and infer the module name from the `$ARGUMENTS` content.
    - Ask the user to confirm the inferred module name before proceeding.
-   - If no PRD is found, ask the user to create one first via `/speckit.fwx.mod.prd`.
+   - If no PRD is found, ask the user to create one first via `/speckit.fwx.mod_prd`.
 
 2. **Determine module directory**:
    - Once the module name is confirmed, set `module_dir = docs/02-agile/modules/[module_name]/`.
    - Verify `PRD.md` exists at `[module_dir]/PRD.md`.
-   - Check if `[module_dir]/requirements.md` exists (from an earlier `/speckit.fwx.mod.requirements` run) for additional detail.
+   - Check if `[module_dir]/requirements.md` exists (from an earlier `/speckit.fwx.mod_requirements` run) for additional detail.
 
 3. **Check project constitution**:
    - **IF EXISTS**: Load `.specify/memory/constitution.md` for project principles and governance constraints.

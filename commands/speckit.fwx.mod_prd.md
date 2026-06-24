@@ -20,7 +20,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 ## Prerequisites
 
 1. **Source of requirements** — Determine the input source in this order:
-   - If `docs/02-agile/module/[module_name]/requirements.md` exists (from an earlier `/speckit.fwx.mod.requirements` run), read it as the primary source.
+   - If `docs/02-agile/module/[module_name]/requirements.md` exists (from an earlier `/speckit.fwx.mod_requirements` run), read it as the primary source.
    - Otherwise, use the user's text input directly.
    - If neither exists, ask the user to provide requirements.
 

@@ -9,13 +9,25 @@ Speckit extension for scaffolding FairWorx platform modules following platform c
 
 ## Commands
 
+### Application-Level
+
 | Command | Description |
 |---------|-------------|
-| `speckit.fwx.mod.prd` | Generate a Product Requirements Document (PRD.md) for a module |
-| `speckit.fwx.mod.sdd` | Generate a Solution Design Document (SDD.md) for a module |
-| `speckit.fwx.mod.backlog` | Generate a module-level BACKLOG.md from the PRD |
-| `speckit.fwx.mod.requirements` | Clean up raw user input into a structured requirements.md |
+| `speckit.fwx.init` | Initialize docs structure — verify commands, create folders, seed baseline docs from templates |
+| `speckit.fwx.requirements` | Organize raw user input into a structured `requirements.md` for a greenfield application |
+| `speckit.fwx.prd` | Generate a Product Requirements Document (PRD.md) using the app PRD template |
+| `speckit.fwx.sdd` | Generate a Solution Design Document (SDD.md) using the app SDD template |
+| `speckit.fwx.backlog` | Generate an application-level BACKLOG.md by breaking down the PRD into epics and PBIs |
 | `speckit.fwx.docs` | Generate sprint report, devlog, update as-is docs, and sync SDD after implementation |
+
+### Module-Level
+
+| Command | Description |
+|---------|-------------|
+| `speckit.fwx.mod_requirements` | Organize raw user input into a structured `requirements.md` for a new module |
+| `speckit.fwx.mod_prd` | Generate a Product Requirements Document (PRD.md) for a module |
+| `speckit.fwx.mod_sdd` | Generate a Solution Design Document (SDD.md) for a module |
+| `speckit.fwx.mod_backlog` | Generate a module-level BACKLOG.md by breaking down the PRD into epics and PBIs |
 
 ## Usage
 

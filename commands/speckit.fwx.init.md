@@ -21,10 +21,10 @@ Verifies that all `speckit.fwx.*` commands are available and bootstraps the `doc
    - speckit.fwx.requirements.md    — App requirements
    - speckit.fwx.docs.md            — Sprint docs & SDD sync
    - speckit.fwx.init.md            — This command
-   - speckit.fwx.mod.backlog.md     — Module backlog
-   - speckit.fwx.mod.prd.md         — Module PRD
-   - speckit.fwx.mod.sdd.md         — Module SDD
-   - speckit.fwx.mod.requirements.md — Module requirements
+   - speckit.fwx.mod_backlog.md     — Module backlog
+   - speckit.fwx.mod_prd.md         — Module PRD
+   - speckit.fwx.mod_sdd.md         — Module SDD
+   - speckit.fwx.mod_requirements.md — Module requirements
    ```
 
    Missing commands are reported. Any missing commands should be flagged but do not block the rest of the init.
